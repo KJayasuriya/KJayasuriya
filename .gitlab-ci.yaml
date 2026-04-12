@@ -1,0 +1,28 @@
+stages:
+  - validate
+  - test
+  - deploy
+
+validate:
+  stage: validate
+  script:
+    - echo "Checking HTML files..."
+    - ls *.html
+    - echo "Validation complete"
+
+test:
+  stage: test
+  script:
+    - echo "Running basic tests..."
+    - grep -i "<html" index.html
+    - echo "Test passed"
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploying project..."
+    - mkdir public
+    - cp -r * public/
+  artifacts:
+    paths:
+      - public
