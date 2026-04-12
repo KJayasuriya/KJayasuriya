@@ -1,28 +1,18 @@
 stages:
-  - validate
+  - build
   - test
   - deploy
-
-validate:
-  stage: validate
+build-job:
+  stage: build
   script:
-    - echo "Checking HTML files..."
-    - ls *.html
-    - echo "Validation complete"
-
-test:
+    - echo "Build stage Running"
+test-job:
   stage: test
   script:
-    - echo "Running basic tests..."
-    - grep -i "<html" index.html
-    - echo "Test passed"
-
-deploy:
+    - echo "Test Stage Running"
+deploy-job:
   stage: deploy
   script:
-    - echo "Deploying project..."
-    - mkdir public
-    - cp -r * public/
-  artifacts:
-    paths:
-      - public
+    - echo "Deploy Stage Running"
+
+
